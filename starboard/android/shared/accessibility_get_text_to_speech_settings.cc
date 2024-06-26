@@ -12,21 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "starboard/accessibility.h"
+
 #include "starboard/android/shared/jni_env_ext.h"
 #include "starboard/android/shared/jni_utils.h"
 #include "starboard/common/memory.h"
 
-#include "starboard/android/shared/accessibility_extension.h"
-
-namespace starboard {
-namespace android {
-namespace shared {
-namespace accessibility {
-
 using starboard::android::shared::JniEnvExt;
 using starboard::android::shared::ScopedLocalJavaRef;
 
-bool GetTextToSpeechSettings(SbAccessibilityTextToSpeechSettings* out_setting) {
+bool SbAccessibilityGetTextToSpeechSettings(
+    SbAccessibilityTextToSpeechSettings* out_setting) {
   if (!out_setting ||
       !starboard::common::MemoryIsZero(
           out_setting, sizeof(SbAccessibilityTextToSpeechSettings))) {
@@ -45,8 +41,3 @@ bool GetTextToSpeechSettings(SbAccessibilityTextToSpeechSettings* out_setting) {
 
   return true;
 }
-
-}  // namespace accessibility
-}  // namespace shared
-}  // namespace android
-}  // namespace starboard
